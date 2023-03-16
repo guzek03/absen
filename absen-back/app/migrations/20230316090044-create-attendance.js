@@ -9,11 +9,17 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      status: {
-        type: Sequelize.STRING
-      },
       user_id: {
         type: Sequelize.INTEGER
+      },
+      date: {
+        type: Sequelize.DATEONLY
+      },
+      time_in: {
+        type: Sequelize.TIME
+      },
+      time_out: {
+        type: Sequelize.TIME
       },
       createdAt: {
         allowNull: false,
