@@ -22,7 +22,7 @@ module.exports = {
 			});
 		}
 
-		jwt.verify(token, config.secret, (err, decoded) => {
+		jwt.verify(token, process.env.SECRET, (err, decoded) => {
 			if (err) {
 				return res.status(500).send({
 					auth: false,

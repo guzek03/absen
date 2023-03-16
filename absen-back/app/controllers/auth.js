@@ -15,8 +15,7 @@ module.exports = {
       res.status(200).send({
         auth: true,
         user: user,
-        message: "User registered successfully!",
-        errors: null,
+        message: "User registered successfully!"
       });
     }).catch(err => {
       res.status(500).send({
@@ -35,20 +34,14 @@ module.exports = {
     }).then(user => {
       if (!user) {
         return res.status(404).send({
-          auth: false,
-          email: req.body.email,
-          accessToken: null,
           message: "Error",
-          errors: "User Not Found."
+          errors: "User Not Found"
         });
       }
 
       var passwordIsValid = bcrypt.compareSync(req.body.password, user.password);
       if (!passwordIsValid) {
         return res.status(401).send({
-          auth: false,
-          email: req.body.email,
-          accessToken: null,
           message: "Error",
           errors: "Invalid Password!"
         });
@@ -57,24 +50,19 @@ module.exports = {
       var token = jwt.sign({
         email: user.email
       }, process.env.SECRET, {
-        expiresIn: 86400 //24h expired
+        expiresIn: 86400
       });
 
-				res.status(200).send({
-					auth: true,
-					user: user,
-					accessToken: token,
-					message: "Error",
-					errors: null
-				});
-			}).catch(err => {
-				res.status(500).send({
-					auth: false,
-					email: req.body.email,
-					accessToken: null,
-					message: "Error",
-					errors: err
-				});
-			});
+      res.status(200).send({
+        message: "Success",
+        user: user,
+        accessToken: token,
+      });
+    }).catch(err => {
+      res.status(500).send({
+        message: "Error",
+        errors: err
+      });
+    });
 	}
 }
