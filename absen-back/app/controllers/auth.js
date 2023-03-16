@@ -54,7 +54,7 @@ module.exports = {
         });
       }
 
-      var token = 'Bearer ' + jwt.sign({
+      var token = jwt.sign({
         email: user.email
       }, process.env.SECRET, {
         expiresIn: 86400 //24h expired
