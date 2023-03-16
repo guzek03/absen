@@ -4,20 +4,23 @@
     "password": "makan123",
     "database": "absen_development",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "timezone": "+07:00"
   },
   "test": {
     "username": "root",
     "password": "makan123",
     "database": "absen_test",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "timezone": "+07:00"
   },
   "production": {
     "username": "root",
     "password": "makan123",
     "database": "absen_production",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "timezone": "+07:00"
   }
 }

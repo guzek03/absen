@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      User.hasMany(models.Attendance, { foreignKey: 'user_id' });
     }
   }
   User.init({
@@ -40,7 +40,6 @@ module.exports = (sequelize, DataTypes) => {
   });
   // (async () => {
   //   await sequelize.sync({ force: true });
-  //   await sequelize.sync({});
   // })();
   return User;
 };
