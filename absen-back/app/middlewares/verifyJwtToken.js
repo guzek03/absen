@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 
 module.exports = {
 	verifyToken(req, res, next) {
-		let tokenHeader = req.headers['x-access-token'];
+		let tokenHeader = req.headers['Authorization'];
 
 		if (!tokenHeader) {
 			return res.status(500).send({

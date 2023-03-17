@@ -58,10 +58,10 @@ module.exports = {
       res.status(200).send({
         message: "Success",
         user: user,
-        accessToken: token,
+        token: token,
       });
       
-      // res.cookie('accessToken', token)
+      // res.cookie('token', token)
     }).catch(err => {
       res.status(500).send({
         message: "Error",
@@ -88,7 +88,7 @@ module.exports = {
       res.status(200).send({
         message: "Success, berhasil logout"
       });
-      // res.clearCookie('accessToken');
+      // res.clearCookie('token');
     }).catch(err => {
       res.status(500).send({
         message: "Error",

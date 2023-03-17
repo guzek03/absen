@@ -5,29 +5,39 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-const menuLinks = [
-  {
-    title: "Profile",
-    path: "/profile"
-  },
-  {
-    title: "Absen",
-    path: "/attendance"
-  },
-  {
-    title: "Summary",
-    path: "/summary"
-  }
-]
-
-const MenuItem = ({title, path}) => {
-  const router = useRouter()
-  return (
-    <Nav.Link href={path} active={router.pathname === path}>{title}</Nav.Link>
-  )
-}
-
 const Header = () => {
+  const router = useRouter();
+  const menuLinks = [
+    {
+      title: "Profile",
+      path: "/profile"
+    },
+    {
+      title: "Absen",
+      path: "/attendance"
+    },
+    {
+      title: "Summary",
+      path: "/summary"
+    }
+  ]
+  const MenuItem = ({title, path}) => {
+    const router = useRouter()
+    return (
+      <Nav.Link href={path} active={router.pathname === path}>{title}</Nav.Link>
+    )
+  }
+  
+  const forLogout = async (e) => {
+    
+    e.preventDefault();
+    try {
+      localStorage.removeItem('token');
+      router.push('/login');
+    } catch (error) {
+      console.error(error);
+    }
+  };
   return (
     <Navbar bg="light" expand="lg">
       <Container>
@@ -43,9 +53,11 @@ const Header = () => {
           </Nav>
         </Navbar.Collapse>
         <Navbar.Collapse className="justify-content-end">
-          <Navbar.Text>
-            Signed in as: <a href="#login">Mark Otto</a>
-          </Navbar.Text>
+          <Link href="#" onClick={forLogout}>
+            <Navbar.Text>
+              Logout
+            </Navbar.Text>
+          </Link>
         </Navbar.Collapse>
       </Container>
     </Navbar>
