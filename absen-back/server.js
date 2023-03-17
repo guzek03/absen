@@ -1,9 +1,18 @@
 const express = require("express");
 const app = express();
+// const cookieParser = require('cookie-parser');
+// const session = require('express-session');
 
 require("dotenv").config();
 
 app.use(express.json());
+// app.use(cookieParser());
+// app.use(session({
+//   secret: process.env.SECRET,
+//   resave: false,
+//   saveUninitialized: false
+// }));
+
 
 // app.use(express.urlencoded({
 //   extended: true

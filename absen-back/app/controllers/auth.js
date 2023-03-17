@@ -53,11 +53,42 @@ module.exports = {
         expiresIn: 86400
       });
 
+      // req.session.user = { id: user.id, name: user.name };
+
       res.status(200).send({
         message: "Success",
         user: user,
         accessToken: token,
       });
+      
+      // res.cookie('accessToken', token)
+    }).catch(err => {
+      res.status(500).send({
+        message: "Error",
+        errors: err
+      });
+    });
+	},
+
+  logout(req, res) {
+		return User.findOne({
+      where: {
+        id: req.body.id
+      }
+    }).then(user => {
+      if (!user) {
+        return res.status(404).send({
+          message: "Error",
+          errors: "User Not Found"
+        });
+      }
+
+      // req.session.destroy();
+
+      res.status(200).send({
+        message: "Success, berhasil logout"
+      });
+      // res.clearCookie('accessToken');
     }).catch(err => {
       res.status(500).send({
         message: "Error",

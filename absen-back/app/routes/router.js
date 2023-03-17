@@ -8,6 +8,7 @@ module.exports = function (app) {
 
 	app.post('/auth/signup', duplicateEmailMiddleware.checkDuplicateEmail, auth.signup);
 	app.post('/auth/signin', auth.signin);
+	app.post('/auth/logout', auth.logout);
 
 	app.get('/profile/:id', verifyJwtToken.verifyToken, profile.getProfile);
 	app.patch('/updateProfile', verifyJwtToken.verifyToken, profile.updateProfile);
